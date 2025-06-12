@@ -5,7 +5,7 @@ import { ThemeProvider } from "@/context/ThemeContext";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { SchoolIcon } from "lucide-react"
+import { GraduationCap, SchoolIcon } from "lucide-react"
 
 export default function AuthLayout({
   children,
@@ -19,11 +19,20 @@ export default function AuthLayout({
           {children}
           <div className="lg:w-1/2 w-full h-full bg-brand-950 dark:bg-white/5 lg:grid items-center hidden">
             <div className="relative items-center justify-center  flex z-1">
-              <GridShape />
+              
               <div className="flex flex-col items-center max-w-xs">
                 <Link href="/" className="block mb-4 flex items-center gap-2">
-                 <SchoolIcon className="w-40 h-40 text-white inline" />
-                 <span className="text-5xl font-bold text-white ">Campus Connect</span>
+                <div className="flex items-center space-x-3">
+                <span className="relative flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-tr from-brand-500 to-brand-700 shadow-lg">
+                  <GraduationCap className="text-white" width={50} height={50} />
+                  <span className="absolute -bottom-1 -right-1 w-4 h-4 bg-white rounded-full border-2 border-brand-600 flex items-center justify-center">
+                    <span className="block w-2 h-2 bg-brand-600 rounded-full"></span>
+                  </span>
+                </span>
+                <span className="text-4xl font-bold  text-brand-50 tracking-tight select-none">
+                  Campus Connect
+                </span>
+              </div>
                 </Link>
                 <p className="text-center text-gray-400 dark:text-white/60">
                  Sign in to your account to continue managing your tasks, projects, and more.

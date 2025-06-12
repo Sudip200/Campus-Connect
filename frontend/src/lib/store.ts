@@ -2,9 +2,13 @@ import {createStore,combineReducers,applyMiddleware} from "redux";
 import { thunk } from "redux-thunk";
 import authReducer from "./reducers/authReducer";
 import attendanceReducer from "./reducers/attendenceReducer";
+import postReducer from "./reducers/postReducers";
+import { courseAllocationReducer } from "./reducers/courseAllocationReducer";
 const rootReducer = combineReducers({
     auth: authReducer,
-    attendance: attendanceReducer
+    attendance: attendanceReducer,
+    post:postReducer,
+    courseAllocation:courseAllocationReducer
 })
 const store = createStore(rootReducer, applyMiddleware(thunk))
 export default store;

@@ -8,7 +8,7 @@ export async function middleware(req:NextRequest){
          return NextResponse.redirect(new URL('/signin/',req.url));
     }
    console.log(req.url)
-   let response = await fetch(`http://localhost:3001/v1/user/me`,{
+   let response = await fetch(`${BASE_URL}/v1/user/me`,{
     credentials:'include',
     headers:{
         'authorization':token
