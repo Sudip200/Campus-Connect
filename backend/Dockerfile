@@ -1,7 +1,9 @@
 # Backend: Express.js TypeScript
-FROM node:20
+FROM node:18-alpine
 WORKDIR /app
-COPY backend/package*.json ./
-RUN npm install
+COPY backend/package.json backend/package-lock.json ./
+RUN npm install --legacy-peer-deps
 COPY backend/ .
-CMD ["npm", "run", "ts-node"]
+# RUN npm run build
+EXPOSE 3001
+CMD ["npm","run","ts-node"]
