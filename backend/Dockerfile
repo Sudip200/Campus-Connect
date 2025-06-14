@@ -4,6 +4,6 @@ WORKDIR /app
 COPY backend/package.json backend/package-lock.json ./
 RUN npm install --legacy-peer-deps
 COPY backend/ .
-# RUN npm run build
+RUN npm run build
 EXPOSE 3001
-CMD ["npm","run","ts-node"]
+CMD ["npm","start"]
