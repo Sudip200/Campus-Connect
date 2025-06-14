@@ -30,6 +30,21 @@ jobs:
       run: |
         sshpass -p "${{ secrets.VM_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }} << 'EOF'
           cd ~/project
+          echo "NEXT_PUBLIC_API_BASE_URL=http://localhost:3001" > frontend/.env
+          echo "API_BASE_URL=http://localhost:3001" >> frontend/.env
+
+          echo "NODE_ENV=development" > backend/.env
+          echo "PORT=3001" >> backend/.env
+          echo "MONGO_URL=${{ secrets.MONGO_URL }}" >> backend/.env
+          echo "SECRET_HEX=${{ secrets.SECRET_HEX }}" >> backend/.env
+          echo "ACCESS_TOKEN_LIFETIME_MIN=60" >> backend/.env
+          echo "BCRYPT_N_ROUNDS=12" >> backend/.env
+          echo "WHITELIST_ORIGINS=[\"http://localhost:3000/\"]" >> backend/.env
+          echo "SMTP_USER=project" >> backend/.env
+          echo "SMTP_PASS=secret" >> backend/.env
+          echo "SMTP_PORT=1025" >> backend/.env
+          echo "SMTP_HOST=localhost" >> backend/.env
+          echo "SMTP_FROM_EMAIL=no-reply@example.com" >> backend/.env
           docker-compose pull
           docker-compose up -d --build
         EOF
