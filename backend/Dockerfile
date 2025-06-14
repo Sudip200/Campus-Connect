@@ -1,18 +1,9 @@
-FROM node:10
 
-# Add package file
-COPY package*.json ./
-
-# Install deps
-RUN npm i
-
-# Copy source
-COPY . .
-
-# Build dist
+FROM node:18-alpine
+WORKDIR /app
+COPY backend/package.json backend/package-lock.json ./
+RUN npm install
+COPY backend/ .
 RUN npm run build
-
-# Expose port 3000
-EXPOSE 3000
-
-CMD npm run start
+EXPOSE 3001
+CMD ["node", "dist/server.js"]

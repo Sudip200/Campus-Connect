@@ -1,0 +1,35 @@
+name: Deploy with rsync and sshpass
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Install sshpass and rsync
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y sshpass rsync
+
+    - name: Upload project to VM using rsync
+      run: |
+        sshpass -p "${{ secrets.VM_PASSWORD }}" rsync -avz \
+          --exclude=".git/" \
+          --exclude="node_modules/" \
+          -e "ssh -o StrictHostKeyChecking=no" \
+          ./ ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }}:/home/${{ secrets.VM_USER }}/project
+
+    - name: Run Docker Compose on VM
+      run: |
+        sshpass -p "${{ secrets.VM_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }} << 'EOF'
+          cd ~/project
+          docker-compose pull
+          docker-compose up -d --build
+        EOF

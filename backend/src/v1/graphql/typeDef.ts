@@ -3,13 +3,13 @@ import { gql } from 'apollo-server-express';
 
 const typeDefs = gql`
   enum Days {
-    MONDAY
-    TUESDAY
-    WEDNESDAY
-    THURSDAY
-    FRIDAY
-    SATURDAY
-    SUNDAY
+     sun
+     mon
+     tue 
+     wed 
+     thus
+     fri 
+     sat
   }
 
   type Schedule {

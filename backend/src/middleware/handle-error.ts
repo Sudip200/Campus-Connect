@@ -10,7 +10,7 @@ import config from '../config/config';
  *
  * @param handler Request handler to check for error
  */
-const handleErrorMiddleware = (handler: RequestHandler): RequestHandler => async (req, res, next) => {
+const handleErrorMiddleware = (handler: any): RequestHandler => async (req, res, next) => {
   handler(req, res, next).catch((err: Error) => {
     if (config.isDevelopment) {
       logger.log({

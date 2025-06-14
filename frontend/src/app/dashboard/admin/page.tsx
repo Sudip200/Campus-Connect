@@ -1,4 +1,4 @@
-import LineChart from "@/app/(admin)/(others-pages)/(chart)/line-chart/page";
+import LineChart from "../../../../archive/(admin)/(others-pages)/(chart)/line-chart/page";
 import BarChartOne from "@/components/charts/bar/BarChartOne";
 import { BarChart } from "lucide-react";
 

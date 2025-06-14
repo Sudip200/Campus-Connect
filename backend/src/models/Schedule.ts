@@ -4,7 +4,7 @@ export enum Days {
   mon = 'mon',
   tue = 'tue',
   wed = 'wed',
-  thus = 'thus',
+  thus ='thus',
   fri = 'fri',
   sat = 'sat',
 }

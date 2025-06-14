@@ -10,8 +10,8 @@ interface PageProps {
     };
 }
 let BASE_URL = process.env.API_BASE_URL;
-export default async function({ params }: PageProps) { 
-    console.log(BASE_URL);
+export default async function  Page({ params }:any) { 
+
     const cookieStore = await cookies();
     const courseId = (await params).courseId;
     const token =  cookieStore.get('Authorization')?.value;
