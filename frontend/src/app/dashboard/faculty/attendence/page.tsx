@@ -1,4 +1,4 @@
-import CourseTable from "@/components/faulty/table/CourseTable";
+import CourseTable from "@/components/faculty/table/CourseTable";
 import BasicTableOne from "@/components/tables/BasicTableOne";
 import { Table } from "@/components/ui/table";
 import React from "react";

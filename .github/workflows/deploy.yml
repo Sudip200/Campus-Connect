@@ -32,6 +32,8 @@ jobs:
           cd ~/project
           echo "NEXT_PUBLIC_API_BASE_URL=http://20.193.159.139:3001/" > frontend/.env
           echo "API_BASE_URL=http://20.193.159.139:3001/" >> frontend/.env
+          echo "NEXT_PUBLIC_API_BASE_URL=http://20.193.159.139:3001/" > frontend/.env.production
+          echo "API_BASE_URL=http://20.193.159.139:3001/" >> frontend/.env.production
           echo "NODE_ENV=development" > backend/.env
           echo "PORT=3001" >> backend/.env
           echo "MONGO_URL=${{ secrets.MONGO_URL }}" >> backend/.env
@@ -44,6 +46,7 @@ jobs:
           echo "SMTP_PORT=1025" >> backend/.env
           echo "SMTP_HOST=localhost" >> backend/.env
           echo "SMTP_FROM_EMAIL=no-reply@example.com" >> backend/.env
+          docker-compose down -v --remove-orphans
           docker-compose pull
-          docker-compose up -d --build
+          docker-compose up 
         EOF

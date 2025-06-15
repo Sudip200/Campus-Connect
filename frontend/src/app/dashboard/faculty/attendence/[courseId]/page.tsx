@@ -1,6 +1,6 @@
 
-import CourseTable from "@/components/faulty/table/CourseTable";
-import StudentAttendanceTable from "@/components/faulty/table/StudentAttendanceTable";
+import CourseTable from "@/components/faculty/table/CourseTable";
+import StudentAttendanceTable from "@/components/faculty/table/StudentAttendanceTable";
 import InputGroup from "@/components/form/form-elements/InputGroup";
 import {cookies} from "next/headers";
 import { useParams } from "next/navigation";
