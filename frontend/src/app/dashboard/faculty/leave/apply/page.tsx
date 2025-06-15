@@ -41,6 +41,7 @@ export default function ApplyLeave() {
       <div>
         <Label htmlFor="reason">Reason for Leave</Label>
         <TextArea
+          name=""
           placeholder="Enter your reason for leave..."
           value={reason}
           onChange={setReason}

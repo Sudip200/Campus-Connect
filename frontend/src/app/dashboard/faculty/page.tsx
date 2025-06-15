@@ -23,6 +23,7 @@ import {
 } from 'lucide-react';
 import MonthlySalesChart from '@/components/ecommerce/MonthlySalesChart';
 import StatisticsChart from '@/components/ecommerce/StatisticsChart';
+import AttendanceChart from '@/components/admin/AttendanceChart';
 
 // Faculty Metrics Component
 const FacultyMetrics = () => {
@@ -277,7 +278,7 @@ export default function FacultyDashboard() {
 
           {/* Faculty Performance - Left column */}
           <div className="col-span-12 lg:col-span-7">
-              <StatisticsChart/>
+             <AttendanceChart/>
           </div>
 
           {/* Schedule Overview - Right column */}

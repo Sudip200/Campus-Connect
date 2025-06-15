@@ -40,6 +40,7 @@ import { RootState, AppDispatch } from "@/lib/store";
 import { getUserDetails } from "@/lib/actions/authActions";
 import { DollarLineIcon, HorizontaLDots } from "@/icons";
 import { TimeToLeave } from "@mui/icons-material";
+import NoticeBoard from "@/app/dashboard/faculty/notices/page";
 
 type NavItem = {
   name: string;
@@ -175,6 +176,14 @@ const AppSidebar: React.FC = () => {
       icon: <Calendar className="w-5 h-5" />,
       name: "Timetable",
       path: "/dashboard/student/timetable",
+    },{
+      icon: <IndianRupee className="w-5 h-5" />,
+      name: "Fees",
+      path: "/dashboard/student/fees",
+    },{
+      icon: <Clipboard className="w-5 h-5" />,
+      name: "Notices",
+      path: "/dashboard/student/notices",
     });
   }
 

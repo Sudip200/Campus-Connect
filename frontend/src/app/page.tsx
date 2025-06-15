@@ -1,23 +1,23 @@
 "use client"
 import React, { useState, useEffect } from 'react';
-import { 
-  GraduationCap, 
-  Users, 
-  Calendar, 
-  DollarSign, 
-  BarChart3, 
-  Bell, 
-  BookOpen, 
-  Clock, 
-  CreditCard, 
-  Eye, 
-  MapPin, 
-  FileText, 
-  UserCheck, 
-  Settings, 
-  Zap, 
-  Shield, 
-  Smartphone, 
+import {
+  GraduationCap,
+  Users,
+  Calendar,
+  DollarSign,
+  BarChart3,
+  Bell,
+  BookOpen,
+  Clock,
+  CreditCard,
+  Eye,
+  MapPin,
+  FileText,
+  UserCheck,
+  Settings,
+  Zap,
+  Shield,
+  Smartphone,
   ArrowRight,
   CheckCircle,
   Star,
@@ -25,7 +25,7 @@ import {
   Moon,
   Sun
 } from 'lucide-react';
-
+import Link from 'next/link';
 const ThemeToggleButton = () => {
   const [isDark, setIsDark] = useState(false);
 
@@ -64,9 +64,9 @@ const FloatingElement = ({
   delay?: number;
 }) => {
   return (
-    <div 
-      className="animate-bounce" 
-      style={{ 
+    <div
+      className="animate-bounce"
+      style={{
         animationDelay: `${delay}s`,
         animationDuration: '3s',
         animationIterationCount: 'infinite'
@@ -87,9 +87,9 @@ type FeatureCardProps = {
 
 const FeatureCard = ({ icon: Icon, title, features, gradient, delay = 0 }: FeatureCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
-  
+
   return (
-    <div 
+    <div
       className={`relative group transform transition-all duration-700 hover:scale-105 hover:-translate-y-2`}
       style={{ animationDelay: `${delay}ms` }}
       onMouseEnter={() => setIsHovered(true)}
@@ -186,25 +186,27 @@ export default function CampusConnectLanding() {
                 Campus Connect
               </span>
             </div>
-            
+
             <div className="hidden md:flex items-center space-x-8">
               <a href="#features" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200">Features</a>
-              <a href="#pricing" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200">Pricing</a>
               <a href="#about" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200">About</a>
               <ThemeToggleButton />
-              <button className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-2 rounded-full font-medium transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-                Get Started
-              </button>
+              <Link href={'/dashboard'}>
+                 <button className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-2 rounded-full font-medium transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                  Get Started
+                </button>
+              </Link>
+
             </div>
           </div>
         </nav>
       </header>
 
       {/* Hero Section */}
-        <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 dark:from-blue-800 dark:via-blue-900 dark:to-gray-900"></div>
 
-        
+
         {/* Floating Elements */}
         <div className="absolute top-20 left-10 opacity-30">
           <FloatingElement delay={0}>
@@ -213,7 +215,7 @@ export default function CampusConnectLanding() {
             </div>
           </FloatingElement>
         </div>
-        
+
         <div className="absolute top-40 right-20 opacity-30">
           <FloatingElement delay={1}>
             <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center">
@@ -239,13 +241,13 @@ export default function CampusConnectLanding() {
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-blue-100 mb-12 max-w-3xl mx-auto leading-relaxed">
-              Empower your institution with an all-in-one SaaS platform that streamlines administration, 
+              Empower your institution with an all-in-one SaaS platform that streamlines administration,
               enhances student experience, and revolutionizes faculty management.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 mb-16">
               <button className="group bg-white text-blue-700 px-8 py-4 rounded-full font-bold text-lg shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 flex items-center space-x-2">
-                <span>Start Free Trial</span>
+                 <Link href={'/dashboard'}><span>Get Started</span></Link>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
               </button>
               <button className="group flex items-center space-x-3 text-white hover:text-blue-200 transition-colors duration-300">
@@ -257,12 +259,12 @@ export default function CampusConnectLanding() {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+            {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
               <StatCard number="1000+" label="Institutions" icon={GraduationCap} />
               <StatCard number="50K+" label="Students" icon={Users} />
               <StatCard number="5K+" label="Faculty" icon={BookOpen} />
               <StatCard number="99.9%" label="Uptime" icon={Shield} />
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
@@ -278,7 +280,7 @@ export default function CampusConnectLanding() {
               </span>
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Whether you're an administrator, student, or faculty member, Campus Connect provides 
+              Whether you're an administrator, student, or faculty member, Campus Connect provides
               tailored tools to enhance your educational experience.
             </p>
           </div>
@@ -295,11 +297,10 @@ export default function CampusConnectLanding() {
                   <button
                     key={id}
                     onClick={() => setActiveTab(id)}
-                    className={`flex items-center space-x-2 px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
-                      activeTab === id
+                    className={`flex items-center space-x-2 px-6 py-3 rounded-xl font-medium transition-all duration-300 ${activeTab === id
                         ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg transform scale-105'
                         : 'text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
-                    }`}
+                      }`}
                   >
                     <Icon className="w-5 h-5" />
                     <span>{label}</span>
@@ -313,138 +314,138 @@ export default function CampusConnectLanding() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {activeTab === 'admin' && (
               <>
-                <FeatureCard 
-                  icon={DollarSign} 
-                  title="Payroll Management" 
+                <FeatureCard
+                  icon={DollarSign}
+                  title="Payroll Management"
                   features={["Automated salary calculations", "Tax and deduction handling", "Direct bank integration", "Bulk processing support"]}
                   gradient="from-green-500 to-emerald-600"
                   delay={0}
                 />
-                <FeatureCard 
-                  icon={Calendar} 
-                  title="Course Allocation" 
+                <FeatureCard
+                  icon={Calendar}
+                  title="Course Allocation"
                   features={["Smart scheduling algorithms", "Conflict detection", "Workload balancing", "Faculty expertise matching"]}
                   gradient="from-blue-500 to-cyan-600"
                   delay={100}
                 />
-                <FeatureCard 
-                  icon={Users} 
-                  title="User Management" 
+                <FeatureCard
+                  icon={Users}
+                  title="User Management"
                   features={["Role-based access control", "Bulk user imports", "Account lifecycle management", "Permission customization"]}
                   gradient="from-purple-500 to-indigo-600"
                   delay={200}
                 />
-                <FeatureCard 
-                  icon={BarChart3} 
-                  title="Analytics Dashboard" 
+                <FeatureCard
+                  icon={BarChart3}
+                  title="Analytics Dashboard"
                   features={["Real-time insights", "Custom report generation", "Performance metrics", "Data visualization"]}
                   gradient="from-orange-500 to-red-600"
                   delay={300}
                 />
-                <FeatureCard 
-                  icon={UserCheck} 
-                  title="Leave Approval" 
+                <FeatureCard
+                  icon={UserCheck}
+                  title="Leave Approval"
                   features={["Automated workflows", "Balance tracking", "Policy compliance", "Notification system"]}
                   gradient="from-teal-500 to-green-600"
                   delay={400}
                 />
-                <FeatureCard 
-                  icon={Bell} 
-                  title="Notice Management" 
+                <FeatureCard
+                  icon={Bell}
+                  title="Notice Management"
                   features={["Rich text formatting", "Targeted distribution", "Scheduled publishing", "Engagement tracking"]}
                   gradient="from-pink-500 to-rose-600"
                   delay={500}
                 />
               </>
             )}
-            
+
             {activeTab === 'student' && (
               <>
-                <FeatureCard 
-                  icon={CreditCard} 
-                  title="Fee Payment" 
+                <FeatureCard
+                  icon={CreditCard}
+                  title="Fee Payment"
                   features={["Multiple payment gateways", "Transaction history", "Payment reminders", "Secure processing"]}
                   gradient="from-green-500 to-emerald-600"
                   delay={0}
                 />
-                <FeatureCard 
-                  icon={Calendar} 
-                  title="Schedule Viewer" 
+                <FeatureCard
+                  icon={Calendar}
+                  title="Schedule Viewer"
                   features={["Personalized timetables", "Event calendars", "Change notifications", "Mobile synchronization"]}
                   gradient="from-blue-500 to-cyan-600"
                   delay={100}
                 />
-                <FeatureCard 
-                  icon={Eye} 
-                  title="Notice Viewer" 
+                <FeatureCard
+                  icon={Eye}
+                  title="Notice Viewer"
                   features={["Prioritized display", "Smart filtering", "Category organization", "Read status tracking"]}
                   gradient="from-purple-500 to-indigo-600"
                   delay={200}
                 />
-                <FeatureCard 
-                  icon={Clock} 
-                  title="Attendance Tracking" 
+                <FeatureCard
+                  icon={Clock}
+                  title="Attendance Tracking"
                   features={["Real-time updates", "Visual dashboards", "Low attendance alerts", "Trend analysis"]}
                   gradient="from-orange-500 to-red-600"
                   delay={300}
                 />
-                <FeatureCard 
-                  icon={MapPin} 
-                  title="Campus Resources" 
+                <FeatureCard
+                  icon={MapPin}
+                  title="Campus Resources"
                   features={["Library integration", "Hostel management", "Transport schedules", "Service booking"]}
                   gradient="from-teal-500 to-green-600"
                   delay={400}
                 />
-                <FeatureCard 
-                  icon={Smartphone} 
-                  title="Mobile Access" 
+                <FeatureCard
+                  icon={Smartphone}
+                  title="Mobile Access"
                   features={["Responsive design", "Offline capabilities", "Push notifications", "Touch-optimized UI"]}
                   gradient="from-pink-500 to-rose-600"
                   delay={500}
                 />
               </>
             )}
-            
+
             {activeTab === 'faculty' && (
               <>
-                <FeatureCard 
-                  icon={FileText} 
-                  title="Leave Management" 
+                <FeatureCard
+                  icon={FileText}
+                  title="Leave Management"
                   features={["Digital applications", "Approval tracking", "Leave balance view", "Automated notifications"]}
                   gradient="from-green-500 to-emerald-600"
                   delay={0}
                 />
-                <FeatureCard 
-                  icon={DollarSign} 
-                  title="Salary Management" 
+                <FeatureCard
+                  icon={DollarSign}
+                  title="Salary Management"
                   features={["Detailed payslips", "Annual summaries", "PDF downloads", "Deduction breakdowns"]}
                   gradient="from-blue-500 to-cyan-600"
                   delay={100}
                 />
-                <FeatureCard 
-                  icon={Calendar} 
-                  title="Schedule Management" 
+                <FeatureCard
+                  icon={Calendar}
+                  title="Schedule Management"
                   features={["Teaching timetables", "Room allocations", "Schedule adjustments", "Conflict resolution"]}
                   gradient="from-purple-500 to-indigo-600"
                   delay={200}
                 />
-                <FeatureCard 
-                  icon={UserCheck} 
-                  title="Attendance Tracking" 
+                <FeatureCard
+                  icon={UserCheck}
+                  title="Attendance Tracking"
                   features={["Bulk entry support", "Automated calculations", "Report generation", "Export capabilities"]}
                   gradient="from-orange-500 to-red-600"
                   delay={300}
                 />
-                <FeatureCard 
-                  icon={BookOpen} 
-                  title="Course Management" 
+                <FeatureCard
+                  icon={BookOpen}
+                  title="Course Management"
                   features={["Content creation", "Grade management", "Student progress tracking", "Performance analytics"]}
                   gradient="from-teal-500 to-green-600"
                   delay={400}
                 />
-                <FeatureCard 
-                  icon={Zap} 
-                  title="E-Learning Platform" 
+                <FeatureCard
+                  icon={Zap}
+                  title="E-Learning Platform"
                   features={["Resource uploads", "Interactive content", "Usage analytics", "Student engagement tracking"]}
                   gradient="from-pink-500 to-rose-600"
                   delay={500}
@@ -454,13 +455,13 @@ export default function CampusConnectLanding() {
           </div>
         </div>
       </section>
-        
 
 
 
 
 
-        
+
+
       {/* Footer */}
       <footer className="bg-gray-900 dark:bg-gray-950 text-white py-16">
         <div className="max-w-7xl mx-auto px-6">
@@ -477,7 +478,7 @@ export default function CampusConnectLanding() {
               </span>
             </div>
           </div>
-          
+
           <div className="text-center text-gray-400">
             <p>&copy; 2025 Campus Connect. All rights reserved.</p>
             <p className="mt-2">Transforming education through innovative technology.</p>

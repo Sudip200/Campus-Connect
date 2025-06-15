@@ -1,8 +1,9 @@
 import { NextResponse,NextRequest } from "next/server";
-let BASE_URL = process.env.API_BASE_URL || "http://localhost:3001";
+let BASE_URL = process.env.API_BASE_URL;
 
 export async function middleware(req:NextRequest){
     try{
+    console.log('inside middleware')
     let token = req.cookies.get('Authorization')?.value;
     if(!token){
          return NextResponse.redirect(new URL('/signin/',req.url));
@@ -15,6 +16,7 @@ export async function middleware(req:NextRequest){
     }
    });
    let data =  await response.json();
+   console.log(data)
    let retrivedRole = data.user.role;
    let pathName = new URL(req.url).pathname
    switch(retrivedRole){
