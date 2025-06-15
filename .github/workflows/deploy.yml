@@ -18,7 +18,7 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y sshpass rsync
 
-    - name: Upload project to VM using rsync (including .env files)
+    - name: Upload project to VM using rsync (excluding node_modules and .git)
       run: |
         sshpass -p "${{ secrets.VM_PASSWORD }}" rsync -avz \
           --exclude=".git/" \
@@ -26,27 +26,36 @@ jobs:
           -e "ssh -o StrictHostKeyChecking=no" \
           ./ ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }}:/home/${{ secrets.VM_USER }}/project
 
-    - name: Run Docker Compose on VM
+    - name: Setup environment variables and run Docker Compose on VM
       run: |
-        sshpass -p "${{ secrets.VM_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }} << 'EOF'
+        sshpass -p "${{ secrets.VM_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }} << EOF
+          set -e
           cd ~/project
+
+          echo "Creating frontend and backend .env files..."
+
+          # Frontend env
+          mkdir -p frontend backend
           echo "NEXT_PUBLIC_API_BASE_URL=http://20.193.159.139:3001/" > frontend/.env
           echo "API_BASE_URL=http://20.193.159.139:3001/" >> frontend/.env
           echo "NEXT_PUBLIC_API_BASE_URL=http://20.193.159.139:3001/" > frontend/.env.production
           echo "API_BASE_URL=http://20.193.159.139:3001/" >> frontend/.env.production
-          echo "NODE_ENV=development" > backend/.env
+
+          # Backend env
+          echo "NODE_ENV=production" > backend/.env
           echo "PORT=3001" >> backend/.env
           echo "MONGO_URL=${{ secrets.MONGO_URL }}" >> backend/.env
           echo "SECRET_HEX=${{ secrets.SECRET_HEX }}" >> backend/.env
           echo "ACCESS_TOKEN_LIFETIME_MIN=60" >> backend/.env
           echo "BCRYPT_N_ROUNDS=12" >> backend/.env
-          echo "WHITELIST_ORIGINS=[\"http://localhost:3000/\"]" >> backend/.env
+          echo "WHITELIST_ORIGINS=[\\"http://localhost:3000\\"]" >> backend/.env
           echo "SMTP_USER=project" >> backend/.env
           echo "SMTP_PASS=secret" >> backend/.env
           echo "SMTP_PORT=1025" >> backend/.env
           echo "SMTP_HOST=localhost" >> backend/.env
           echo "SMTP_FROM_EMAIL=no-reply@example.com" >> backend/.env
+
+          echo "Rebuilding containers..."
           docker-compose down -v --remove-orphans
-          docker-compose pull
-          docker-compose up 
+          docker-compose up -d --build
         EOF

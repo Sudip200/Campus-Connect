@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: frontend/Dockerfile
     env_file:
-      - ./frontend/.env
+      - ./frontend/.env.production
     ports:
       - "3000:3000"
     depends_on:
