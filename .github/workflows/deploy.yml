@@ -55,13 +55,6 @@ jobs:
           echo "SMTP_HOST=localhost" >> backend/.env
           echo "SMTP_FROM_EMAIL=no-reply@example.com" >> backend/.env
           
-          echo "Installing Node.js 23 system-wide..."
-          curl -fsSL https://deb.nodesource.com/setup_23.x | sudo -E bash -
-          sudo apt-get install -y nodejs
-
-          echo "Checking node and npm versions"
-          node -v
-          npm -v
 
           echo "Starting Backend"
 
