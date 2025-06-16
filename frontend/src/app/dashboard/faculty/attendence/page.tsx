@@ -6,7 +6,7 @@ import { cookies } from "next/headers";
 export default async function() {
 const cookieStore = await cookies();
 const token = cookieStore.get('Authorization')?.value;
-const res = await fetch(`http://localhost:3001/v1/courses/get-all`, {
+const res = await fetch(`${process.env.API_BASE_URL}/v1/courses/get-all`, {
     cache: 'no-store',
     headers: {
         'Content-Type': 'application/json',

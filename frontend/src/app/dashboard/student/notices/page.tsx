@@ -1,15 +1,20 @@
 import ComponentCard from "@/components/common/ComponentCard";
-import { Clipboard } from "lucide-react";
+import { cookies } from "next/headers";
 
-export default function NoticeBoard() {
-    let notices = [
+export default async function NoticeBoard() {
+  let BASE_URL = process.env.API_BASE_URL;
+
+  let notices = [
     {
       title: "Semester Exams Schedule Released",
       desc: "Dates for mid and end-semester exams have been announced.",
+      pdfUrl: `${BASE_URL}/notices/routine.pdf`,
       children: (
-        <p className="text-sm text-gray-700 dark:text-gray-300">  
-          Mid-semester exams start from 10th July. Check the timetable on the portal.
-        </p>
+        <div>
+          <p className="text-sm text-gray-700 dark:text-gray-300 mb-2">
+            Mid-semester exams start from 10th July. Check the timetable below.
+          </p>
+        </div>
       ),
     },
     {
@@ -39,13 +44,24 @@ export default function NoticeBoard() {
       ),
     },
   ];
-    return (
-        <div className="grid grid-cols-1 gap-5">
-           {notices.map((item,index) => (
-                  <div key={index}> 
-                  <ComponentCard children={item.children} title={item.title} desc={item.desc}/>
-                   </div>
-           ))}
+
+  return (
+    <div className="grid grid-cols-1 gap-5">
+      {notices.map((item, index) => (
+        <div key={index}>
+          <ComponentCard title={item.title} desc={item.desc}>
+            {item.children}
+            {/* PDF Preview if URL exists */}
+            {item.pdfUrl && (
+              <iframe
+                src={item.pdfUrl}
+                title="PDF Preview"
+                className="w-3xl mt-4 h-[400px] rounded-lg border border-gray-300 dark:border-gray-700"
+              ></iframe>
+            )}
+          </ComponentCard>
         </div>
-    )
+      ))}
+    </div>
+  );
 }

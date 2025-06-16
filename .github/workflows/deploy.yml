@@ -55,7 +55,25 @@ jobs:
           echo "SMTP_HOST=localhost" >> backend/.env
           echo "SMTP_FROM_EMAIL=no-reply@example.com" >> backend/.env
 
-          echo "Rebuilding containers..."
-          docker-compose down -v --remove-orphans
-          docker-compose up -d --build
+
+          sudo npm install -g pm2
+          
+          echo "Starting Backend"
+         
+          npm install --legacy-peer-deps
+          npm run build
+          pm2 delete backend || true
+          pm2 start dist/server.js --name backend
+          
+          echo "Starting Frontend"
+
+          cd ../frontend
+          npm install
+          npm run build
+          pm2 delete frontend || true
+          pm2 start npm --name frontend -- start
+          
+          pm2 save
+          pm2 startup
+
         EOF

@@ -10,12 +10,14 @@ const getAllocatedCourse: RequestHandler = async (
 ) => {
   try {
     let query:{faculty_id?:string} = {};
+    let user_query:{_id?:string} = {};
     let faculty_id = req.query.faculty_id;
     if (faculty_id) {
       query = { faculty_id };
+      user_query = { _id:faculty_id}
     }
-    let allocations = await CourseAllocation.find(query).populate('course_id').populate('faculty_id').exec();
-    let facultyList = query.faculty_id? [...allocations[0].faculty_id as any] : await User.find({ role: 'faculty' as any }).exec();
+    let allocations = await CourseAllocation.find(query).populate('course_id').populate('faculty_id').lean().exec();
+    let facultyList = await User.find({ ...user_query, role: 'faculty' as any }).exec();
     const facultyMap: Record<string, { id: string; name: string; courses: any[] }> = {};
     facultyList.forEach((alloc: any) => {
       const faculty = alloc;
