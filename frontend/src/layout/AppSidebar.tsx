@@ -134,14 +134,14 @@ const AppSidebar: React.FC = () => {
           { name: "Students", path: "/dashboard/admin/fees" },
         ],
       },
-      //  {
-      //   icon: <User className="w-5 h-5" />,
-      //   name: "Users",
-      //   subItems: [
-      //     { name: "Students", path: "/dashboard/admin/users/students" },
-      //     { name: "Faculties", path: "/dashboard/admin/users/faculties" },
-      //   ],
-      // },
+       {
+        icon: <User className="w-5 h-5" />,
+        name: "Users",
+        subItems: [
+          { name: "Students", path: "/dashboard/admin/users/students" },
+          { name: "Faculties", path: "/dashboard/admin/users/faculties" },
+        ],
+      },
       {
         icon: <Clock className="w-5 h-5" />,
         name: "Schedule",
