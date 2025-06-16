@@ -80,13 +80,13 @@ export default function ScheduleMaker() {
       <div className="rounded-2xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-white/[0.03]">
         <h2 className="text-xl font-semibold mb-4">Create Schedule</h2>
 
-        <div className="grid md:grid-cols-4 gap-4">
+        <div className="grid md:grid-cols-4 gap-4 overflow-hidden ">
 
           <select
             name="course_id"
             value={form.course_id}
             onChange={handleChange}
-            className="p-2 rounded-lg border border-gray-300 dark:border-gray-700 dark:bg-gray-800"
+            className="p-2 rounded-lg  border border-gray-300 dark:border-gray-700 dark:bg-gray-800"
           >
             <option value="">Select Course</option>
             {courses.map((c) => (
@@ -100,7 +100,7 @@ export default function ScheduleMaker() {
             name="day"
             value={form.day}
             onChange={handleChange}
-            className="p-2 rounded-lg border border-gray-300 dark:border-gray-700 dark:bg-gray-800"
+            className="p-2 rounded-lg border border-gray-300 dark:border-gray-700 dark:bg-gray-800 "
           >
             <option value="">Select Day</option>
             {[

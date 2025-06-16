@@ -20,8 +20,8 @@ export default function CreateNotice() {
     const [title, setTitle] = useState("")
     const dispatch = useDispatch<AppDispatch>()
     return (
-        <div className="flex-col flex justify-center items-center">
-            <form className="space-y-2 w-lg" onSubmit={(e) => {
+        <div className="max-w-5xl mx-auto">
+            <form className="space-y-2" onSubmit={(e) => {
                 e.preventDefault()
                 dispatch(postNotice({
                     title: title,

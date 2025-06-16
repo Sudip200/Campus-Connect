@@ -19,7 +19,7 @@ const StudentFeesPage = () => {
   const [selectedMethod, setSelectedMethod] = useState("UPI");
 
   return (
-    <div className="max-w-4xl mx-auto space-y-8 p-6">
+    <div className="max-w-4xl mx-auto space-y-8 ">
       {/* Pending Fee Card */}
       <div className="rounded-2xl bg-brand-50 dark:bg-brand-500/20 p-6 shadow-theme-md">
         <div className="flex justify-between items-center">
@@ -34,7 +34,7 @@ const StudentFeesPage = () => {
       </div>
 
       {/* Payment Method Selection */}
-      <div className="bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-gray-800 rounded-2xl p-6 shadow-theme-md">
+      <div className="bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-gray-800 rounded-2xl p-6 shadow-theme-md ">
         <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
           Choose Payment Method
         </h3>
@@ -43,7 +43,7 @@ const StudentFeesPage = () => {
             <button
               key={method.label}
               onClick={() => setSelectedMethod(method.label)}
-              className={`flex items-center gap-3 px-5 py-3 rounded-lg border transition-all ${
+              className={`flex items-center gap-3 px-2 py-3   rounded-lg border transition-all ${
                 selectedMethod === method.label
                   ? "bg-brand-100 border-brand-500 text-brand-700"
                   : "bg-gray-50 border-gray-200 text-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700"

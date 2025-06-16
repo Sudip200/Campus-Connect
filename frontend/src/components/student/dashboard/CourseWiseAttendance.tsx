@@ -26,6 +26,9 @@ const options: ApexOptions = {
   chart: {
     type: "pie"
   },
+  stroke:{
+    show:false
+  },
   labels: courseAttendanceData.map((data) => data.course),
   colors: [
     "#465FFF", // light blue-100
