@@ -77,4 +77,8 @@ jobs:
 
           sleep 10
 
+          pm2 list
+
+          echo "Successfully Deployed"
+
         EOF
