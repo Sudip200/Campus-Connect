@@ -366,13 +366,16 @@ const AppSidebar: React.FC = () => {
             <>
               {/* <Image src="/images/logo/logo.svg" alt="Logo" width={150} height={40} className="dark:hidden" />
               <Image src="/images/logo/logo-dark.svg" alt="Logo" width={150} height={40} className="hidden dark:block" /> */}
-              <div className="flex items-center space-x-3">
-                <span className="relative flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-tr from-brand-500 to-brand-700 shadow-lg">
+              <div className="hidden lg:flex items-center space-x-3 mt-2">
+                {/* <span className="relative flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-tr from-brand-500 to-brand-700 shadow-lg">
                   <GraduationCap className="text-white" width={32} height={32} />
                   <span className="absolute -bottom-1 -right-1 w-4 h-4 bg-white rounded-full border-2 border-brand-600 flex items-center justify-center">
                     <span className="block w-2 h-2 bg-brand-600 rounded-full"></span>
                   </span>
-                </span>
+                </span> */}
+                  <span className="">
+                    <Image src="/images/brand/bbit.jpg" width={60} height={60} alt={"brand_logo"}  className="rounded-full sm:hidden  md:hidden lg:inline"/>
+                  </span>
                 <span className="text-xl font-bold text-brand-700 dark:text-brand-50 tracking-tight select-none">
                   Campus Connect
                 </span>
