@@ -36,10 +36,10 @@ jobs:
 
           # Frontend env
           mkdir -p frontend backend
-          echo "NEXT_PUBLIC_API_BASE_URL=http://20.193.159.139:3001/" > frontend/.env
-          echo "API_BASE_URL=http://20.193.159.139:3001/" >> frontend/.env
-          echo "NEXT_PUBLIC_API_BASE_URL=http://20.193.159.139:3001/" > frontend/.env.production
-          echo "API_BASE_URL=http://20.193.159.139:3001/" >> frontend/.env.production
+          echo "NEXT_PUBLIC_API_BASE_URL=http://20.193.159.139:3001" > frontend/.env
+          echo "API_BASE_URL=http://20.193.159.139:3001" >> frontend/.env
+          echo "NEXT_PUBLIC_API_BASE_URL=http://20.193.159.139:3001" > frontend/.env.production
+          echo "API_BASE_URL=http://20.193.159.139:3001" >> frontend/.env.production
 
           # Backend env
           echo "NODE_ENV=production" > backend/.env
@@ -74,5 +74,7 @@ jobs:
           
           pm2 save
           pm2 startup
+
+          sleep 10
 
         EOF

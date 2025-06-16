@@ -8,7 +8,6 @@ export default async function NoticeBoard() {
     {
       title: "Semester Exams Schedule Released",
       desc: "Dates for mid and end-semester exams have been announced.",
-      pdfUrl: `${BASE_URL}/notices/routine.pdf`,
       children: (
         <div>
           <p className="text-sm text-gray-700 dark:text-gray-300 mb-2">
@@ -51,14 +50,6 @@ export default async function NoticeBoard() {
         <div key={index}>
           <ComponentCard title={item.title} desc={item.desc}>
             {item.children}
-            {/* PDF Preview if URL exists */}
-            {item.pdfUrl && (
-              <iframe
-                src={item.pdfUrl}
-                title="PDF Preview"
-                className="w-3xl mt-4 h-[400px] rounded-lg border border-gray-300 dark:border-gray-700"
-              ></iframe>
-            )}
           </ComponentCard>
         </div>
       ))}
