@@ -54,7 +54,11 @@ jobs:
           echo "SMTP_PORT=1025" >> backend/.env
           echo "SMTP_HOST=localhost" >> backend/.env
           echo "SMTP_FROM_EMAIL=no-reply@example.com" >> backend/.env
+          
+          echo "Checking node and npm versions"
 
+          node -v
+          npm -v
 
           echo "Starting Backend"
 
