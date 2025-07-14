@@ -6,7 +6,7 @@ import { ApexOptions } from "apexcharts";
 import dynamic from "next/dynamic";
 
 const ReactApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
-
+// DEMO DATA FOR FACULTY LIST AND ATTENDANCE
 const facultyData = [
   { slNo: 1, name: "Mr. Jayanta Basak", panNo: "ARHPB3753D", degrees: "M.E/M.Tech", designation: "Asst. Prof.", dateOfJoining: "17/11/2021", dateOfLeaving: "", facultyType: "Regular", department: "CSE" },
   { slNo: 2, name: "Dr. Munshi Yusuf Alam", panNo: "AJTPA3789N", degrees: "M.E/M.Tech & Ph. D.", designation: "Asso. Prof.", dateOfJoining: "22/02/2021", dateOfLeaving: "", facultyType: "Regular", department: "CSE" },

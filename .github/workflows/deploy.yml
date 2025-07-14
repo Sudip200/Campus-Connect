@@ -72,9 +72,7 @@ jobs:
           pm2 delete frontend || true
           pm2 start npm --name frontend -- start
           
-          pm2 save
-          pm2 startup
-
+          
           sleep 10
 
           pm2 list

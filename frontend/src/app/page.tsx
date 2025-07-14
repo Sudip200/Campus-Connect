@@ -26,6 +26,7 @@ import {
   Sun
 } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 const ThemeToggleButton = () => {
   const [isDark, setIsDark] = useState(false);
 
@@ -135,6 +136,7 @@ const StatCard: React.FC<StatCardProps> = ({ number, label, icon: Icon }) => {
 export default function CampusConnectLanding() {
   const [activeTab, setActiveTab] = useState('admin');
   const [scrollY, setScrollY] = useState(0);
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -172,7 +174,7 @@ export default function CampusConnectLanding() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900 transition-colors duration-500">
       {/* Header */}
-      <header className="relative z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-b border-white/20 dark:border-gray-700/30 sticky top-0">
+      <header className="z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-b border-white/20 dark:border-gray-700/30 sticky top-0">
         <nav className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
@@ -250,7 +252,9 @@ export default function CampusConnectLanding() {
                  <Link href={'/dashboard'}><span>Get Started</span></Link>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
               </button>
-              <button className="group flex items-center space-x-3 text-white hover:text-blue-200 transition-colors duration-300">
+              <button className="group flex items-center space-x-3 text-white hover:text-blue-200 transition-colors duration-300"
+               onClick={()=> router.push('https://github.com/Sudip200/Campus-Connect')}>
+              
                 <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:bg-white/30 transition-colors duration-300">
                   <Play className="w-6 h-6 ml-1" />
                 </div>
